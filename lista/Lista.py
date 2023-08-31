@@ -1,33 +1,28 @@
 class Lista:
     def __init__(self, maxnelemnts: int) -> None:
-        self.maxnelemnts = maxnelemnts
-        self.dados = [0] * maxnelemnts
-        self.nelements = 0
+        self.maxnelemnts: int = maxnelemnts
+        self.dados: list[int] = [0] * maxnelemnts
+        self.nelements: int = 0
 
-    def consulta(self, x: int) -> bool:
+    def consulta(self, x: int) -> tuple[bool, int]:
         i: int = 0
         while i < self.nelements and self.dados[i] != x:
             i += 1
-        return i < self.nelements
+        return (True, i) if i < self.nelements else (False, -1)
 
     def insere(self, x: int) -> bool:
-        if self.nelements == self.maxnelemnts or self.consulta(x):
+        if self.nelements == self.maxnelemnts or self.consulta(x) != (False, -1):
             return False
         self.dados[self.nelements] = x
         self.nelements += 1
         return True
 
     def remove(self, x: int) -> None:
-        i: int = 0
-        achou: bool = False
-        while i < self.nelements - 1:
-            if self.dados[i] == x:
-                achou = True
-                self.dados[i] = self.dados[i + 1]
-                x = self.dados[i + 1]
-            i += 1
-        if self.nelements > 0 and (achou or self.dados[i] == x):
-            self.nelements -= 1
+        ta_na_lista, i = self.consulta(x)
+        if not ta_na_lista:
+            return
+        self.nelements -= 1
+        self.dados[i] = self.dados[self.nelements]
 
     def imprime(self) -> None:
         for i in range(self.nelements):
