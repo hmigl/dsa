@@ -82,3 +82,13 @@ class Lista:
         for i in range(self.nelements):
             soma += self.dados[i] ** 2
         return soma
+
+    # (f) Elimine o k-esimo elemento da lista, se houver.
+    # Considere que o primeiro elemento da lista esta na posicao 1
+    def remove_k(self, k: int) -> bool:
+        if k <= 0 or k > self.nelements or self.vazia():
+            return False
+        self.nelements -= 1
+        self.dados[k - 1] = self.dados[self.nelements]
+        return True
+
