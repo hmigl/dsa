@@ -52,3 +52,23 @@ class Lista:
             if self.dados[i] % 2 != 0:
                 chaves_impares += 1
         return chaves_impares
+
+    # c) Retorne a media dos valores na lista. Se a lista estiver vazia, o valor da media deve
+    # ser considerado como sendo zero.
+    def media(self) -> float:
+        if self.vazia():
+            return 0
+        soma: int = 0
+        for n in self.dados:
+            soma += n
+        return soma / self.nelements
+
+    # d) Retorna a soma dos valores armazenados na lista.
+    # Se a lista estiver vazia, retorna o valor zero
+    def soma(self) -> int:
+        if self.vazia():
+            return 0
+        soma: int = 0
+        for n in self.dados:
+            soma += n
+        return soma
