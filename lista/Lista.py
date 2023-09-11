@@ -69,6 +69,16 @@ class Lista:
         if self.vazia():
             return 0
         soma: int = 0
-        for n in self.dados:
-            soma += n
+        for i in range(self.nelements):
+            soma += self.dados[i]
+        return soma
+
+    # e) Retorne a soma dos quadrados dos valores armazenados na lista.
+    # Se a lista estiver vazia, retorna o valor zero
+    def soma_dos_quadrados(self) -> int:
+        if self.vazia():
+            return 0
+        soma: int = 0
+        for i in range(self.nelements):
+            soma += self.dados[i] ** 2
         return soma
