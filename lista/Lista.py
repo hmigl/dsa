@@ -123,3 +123,12 @@ class Lista:
                 j += 1
         self.nelements = j
 
+    # (i) Reorganize a lista de forma que os elementos com chaves pares fiquem antes de elementos com chaves impares.
+    def reorganiza_pares_antes(self) -> None:
+        if self.vazia():
+            return
+        for i in range(self.nelements - 1):
+            if self.dados[i] % 2 != 0 and self.dados[i + 1] % 2 == 0:
+                tmp: int = self.dados[i]
+                self.dados[i] = self.dados[i + 1]
+                self.dados[i + 1] = tmp
