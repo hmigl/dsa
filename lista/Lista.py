@@ -43,3 +43,12 @@ class Lista:
                 min = self.dados[i]
 
         return (min, True)
+
+    # b) Retorne o numero de elementos com chave ımpar na lista
+    def chaves_impares(self) -> int:
+        chaves_impares: int = 0
+
+        for i in range(self.nelements):
+            if self.dados[i] % 2 != 0:
+                chaves_impares += 1
+        return chaves_impares
