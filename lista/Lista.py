@@ -17,6 +17,14 @@ class Lista:
         self.nelements += 1
         return True
 
+    # insere(), mas sem a limitacao das chaves repetidas
+    def insere_rep(self, x: int) -> bool:
+        if self.nelements == self.maxnelemnts:
+            return False
+        self.dados[self.nelements] = x
+        self.nelements += 1
+        return True
+
     def remove(self, x: int) -> None:
         ta_na_lista, i = self.consulta(x)
         if not ta_na_lista:
@@ -102,4 +110,16 @@ class Lista:
                 max, i = self.dados[j], j
         self.nelements -= 1
         self.dados[i] = self.dados[self.nelements]
+
+    # (h) Retire todos os elementos da lista com chave igual a um valor x, passado como parametro.
+    # Para esta questao, considere que a lista pode conter mais de um elemento com mesmo valor de chave.
+    def remove_todos(self, x: int) -> None:
+        if self.vazia():
+            return
+        j: int = 0
+        for i in range(self.nelements):
+            if self.dados[i] != x:
+                self.dados[j] = self.dados[i]
+                j += 1
+        self.nelements = j
 
