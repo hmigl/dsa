@@ -27,3 +27,19 @@ class Lista:
     def imprime(self) -> None:
         for i in range(self.nelements):
             print(self.dados[i])
+
+    def vazia(self) -> bool:
+        return self.nelements == 0
+
+    # a) Retorne o menor elemento da lista. Se a lista nao tiver elementos,
+    # a funcao deve retornar uma indicacao de que a lista esta vazia
+    def min(self) -> tuple[int, bool]:
+        if self.vazia():
+            return (-1, False)
+
+        min: int = self.dados[0]
+        for i in range(1, self.nelements):
+            if self.dados[i] < min:
+                min = self.dados[i]
+
+        return (min, True)
