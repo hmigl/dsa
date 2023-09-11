@@ -92,3 +92,14 @@ class Lista:
         self.dados[k - 1] = self.dados[self.nelements]
         return True
 
+    # (g) Retire o elemento de maior valor da lista
+    def remove_max(self) -> None:
+        if self.vazia():
+            return
+        max, i = self.dados[0], 0
+        for j in range(1, self.nelements):
+            if self.dados[j] > max:
+                max, i = self.dados[j], j
+        self.nelements -= 1
+        self.dados[i] = self.dados[self.nelements]
+
