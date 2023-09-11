@@ -59,8 +59,8 @@ class Lista:
         if self.vazia():
             return 0
         soma: int = 0
-        for n in self.dados:
-            soma += n
+        for i in range(self.nelements):
+            soma += self.dados[i]
         return soma / self.nelements
 
     # d) Retorna a soma dos valores armazenados na lista.
