@@ -121,3 +121,21 @@ class Lista:
                 self.dados[i] = self.dados[j]
                 self.dados[j] = tmp
 
+    # (j) Modifique a lista de tal forma que todo elemento da lista com chave maior do que k venha antes
+    # dos elementos na lista com chaves menores ou iguais a k.
+    # O valor de k deve ser passado como parametro para a funcao.
+    #
+    # Em cada grupo de elementos - maiores do que k e menores ou iguais a k) -
+    # a funcao deve manter a ordem original relativa dos elementos.
+    def reorganiza_maiores_que_k_antes(self, k: int) -> None:
+        res: list[int] = self.dados[:]
+        j: int = 0
+        for i in range(self.nelements):
+            if self.dados[i] > k:
+                res[j] = self.dados[i]
+                j += 1
+        for i in range(self.nelements):
+            if self.dados[i] <= k:
+                res[j] = self.dados[i]
+                j += 1
+        self.dados = res
