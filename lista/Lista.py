@@ -55,7 +55,6 @@ class Lista:
     # b) Retorne o numero de elementos com chave ımpar na lista
     def chaves_impares(self) -> int:
         chaves_impares: int = 0
-
         for i in range(self.nelements):
             if self.dados[i] % 2 != 0:
                 chaves_impares += 1
@@ -64,8 +63,6 @@ class Lista:
     # c) Retorne a media dos valores na lista. Se a lista estiver vazia, o valor da media deve
     # ser considerado como sendo zero.
     def media(self) -> float:
-        if self.vazia():
-            return 0
         soma: int = 0
         for i in range(self.nelements):
             soma += self.dados[i]
@@ -74,8 +71,6 @@ class Lista:
     # d) Retorna a soma dos valores armazenados na lista.
     # Se a lista estiver vazia, retorna o valor zero
     def soma(self) -> int:
-        if self.vazia():
-            return 0
         soma: int = 0
         for i in range(self.nelements):
             soma += self.dados[i]
@@ -84,8 +79,6 @@ class Lista:
     # e) Retorne a soma dos quadrados dos valores armazenados na lista.
     # Se a lista estiver vazia, retorna o valor zero
     def soma_dos_quadrados(self) -> int:
-        if self.vazia():
-            return 0
         soma: int = 0
         for i in range(self.nelements):
             soma += self.dados[i] ** 2
@@ -102,8 +95,6 @@ class Lista:
 
     # (g) Retire o elemento de maior valor da lista
     def remove_max(self) -> None:
-        if self.vazia():
-            return
         max, i = self.dados[0], 0
         for j in range(1, self.nelements):
             if self.dados[j] > max:
@@ -113,9 +104,7 @@ class Lista:
 
     # (h) Retire todos os elementos da lista com chave igual a um valor x, passado como parametro.
     # Para esta questao, considere que a lista pode conter mais de um elemento com mesmo valor de chave.
-    def remove_todos(self, x: int) -> None:
-        if self.vazia():
-            return
+    def remove_todos_x(self, x: int) -> None:
         j: int = 0
         for i in range(self.nelements):
             if self.dados[i] != x:
@@ -125,8 +114,6 @@ class Lista:
 
     # (i) Reorganize a lista de forma que os elementos com chaves pares fiquem antes de elementos com chaves impares.
     def reorganiza_pares_antes(self) -> None:
-        if self.vazia():
-            return
         for i in range(self.nelements - 1):
             if self.dados[i] % 2 != 0 and self.dados[i + 1] % 2 == 0:
                 tmp: int = self.dados[i]
