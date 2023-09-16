@@ -114,12 +114,14 @@ class Lista:
 
     # (i) Reorganize a lista de forma que os elementos com chaves pares fiquem antes de elementos com chaves impares.
     def reorganiza_pares_antes(self) -> None:
-        for i in range(self.nelements - 1):
-            j: int = i + 1
-            if self.dados[i] % 2 != 0 and self.dados[j] % 2 == 0:
-                tmp: int = self.dados[i]
-                self.dados[i] = self.dados[j]
-                self.dados[j] = tmp
+        ultimo_par: int = 0
+        for i in range(self.nelements):
+            if self.dados[i] % 2 == 0:
+                self.dados[ultimo_par], self.dados[i] = (
+                    self.dados[i],
+                    self.dados[ultimo_par],
+                )
+                ultimo_par += 1
 
     # (j) Modifique a lista de tal forma que todo elemento da lista com chave maior do que k venha antes
     # dos elementos na lista com chaves menores ou iguais a k.
