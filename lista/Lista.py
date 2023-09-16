@@ -141,3 +141,12 @@ class Lista:
                 res[j] = self.dados[i]
                 j += 1
         self.dados = res
+
+    # (k) Inverta os elementos da lista
+    def inverte_elementos(self) -> None:
+        i: int = 0
+        while i < self.nelements // 2:
+            j: int = (self.nelements - 1) - i
+            self.dados[i], self.dados[j] = self.dados[j], self.dados[i]
+            i += 1
+
