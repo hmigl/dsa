@@ -150,3 +150,15 @@ class Lista:
             self.dados[i], self.dados[j] = self.dados[j], self.dados[i]
             i += 1
 
+    # (l) Reordene os elementos da lista, de forma que, se houver elementos na lista cujas chaves sejam
+    # divisiveis por 10, estes devem vir antes dos outros elementos.
+    def reordena_divisiveis_por_10_antes(self) -> None:
+        ultimo_divisivel_por_10: int = 0
+        for i in range(self.nelements):
+            if self.dados[i] % 10 == 0:
+                self.dados[ultimo_divisivel_por_10], self.dados[i] = (
+                    self.dados[i],
+                    self.dados[ultimo_divisivel_por_10],
+                )
+                ultimo_divisivel_por_10 += 1
+
