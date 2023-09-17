@@ -162,3 +162,24 @@ class Lista:
                 )
                 ultimo_divisivel_por_10 += 1
 
+    # (m) Duplique elementos com chave igual a x na lista. Especificamente, para cada elemento 'e' da lista
+    # com valor de chave igual a x, essa funcao cria um novo elemento com valor de chave igual a x e
+    # o insere apos 'e' na lista. O valor de x deve ser passado como parametro da funcao.
+    #
+    # casos:
+    #  1. lista vazia - OK
+    #  2. lista nao vazia
+    #    2.1 x nao esta - OK
+    #    2.2 x esta e nao pode ser duplicado (self.nelements + 1 > len(self.dados)) - OK
+    #    2.3 x esta e pode ser duplicado (self.nelements + 1 <= len(self.dados)) - OK
+    def duplica_todos_x(self, x: int) -> None:
+        i: int = 0
+        while i < self.nelements:
+            if self.dados[i] == x and self.nelements + 1 <= len(self.dados):
+                j: int = self.nelements
+                while j > i:
+                    self.dados[j] = self.dados[j - 1]
+                    j -= 1
+                self.nelements += 1
+                i += 1
+            i += 1
