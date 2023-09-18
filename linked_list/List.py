@@ -14,11 +14,11 @@ class List:
     def is_empty(self) -> bool:
         return self.head is None
 
-    def search(self, x: int) -> bool:
+    def search(self, x: int) -> Node | None:
         curr: Node | None = self.head
         while (curr is not None) and (curr.get_key() != x):
             curr = curr.next
-        return curr is not None
+        return curr
 
     def insert_back(self, x: int) -> bool:
         if self.search(x):
