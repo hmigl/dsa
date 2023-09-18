@@ -54,6 +54,12 @@ class List:
                 return
             curr = curr.next
 
+    def rem(self, x: int) -> None:
+        node: Node | None = self.search(x)
+        if node:
+            node.key = self.head.get_key()
+            self.head = self.head.next
+
     def print(self) -> None:
         curr: Node | None = self.head
         while curr is not None:
