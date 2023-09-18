@@ -7,7 +7,7 @@ class Node:
         return self.key
 
 
-class List:
+class LinkedList:
     def __init__(self) -> None:
         self.head: Node | None = None
 
