@@ -43,6 +43,27 @@ class DLinkedList:
             curr.next = node
         return True
 
+    def remove(self, x: int) -> bool:
+        if self.is_empty():
+            return False
+
+        if self.head.key == x:
+            self.head = self.head.next
+            if self.head:
+                self.head.prev = None
+            return True
+
+        curr = self.head
+        while curr is not None:
+            if curr.key == x:
+                curr.prev.next = curr.next
+                if curr.next:
+                    curr.next.prev = curr.prev
+                return True
+            curr = curr.next
+
+        return False
+
     def print(self) -> None:
         curr: Node | None = self.head
         while curr is not None:
