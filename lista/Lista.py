@@ -66,7 +66,7 @@ class Lista:
         soma: int = 0
         for i in range(self.nelements):
             soma += self.dados[i]
-        return soma / self.nelements
+        return soma / self.nelements if self.nelements > 0 else 0
 
     # d) Retorna a soma dos valores armazenados na lista.
     # Se a lista estiver vazia, retorna o valor zero
