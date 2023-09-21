@@ -19,6 +19,12 @@ class DLinkedList:
             curr = curr.next
         return curr is not None
 
+    def find(self, x: int) -> Node | None:
+        curr: Node | None = self.head
+        while curr and curr.key != x:
+            curr = curr.next
+        return curr
+
     def insert_front(self, x: int) -> bool:
         if self.search(x):
             return False
@@ -63,6 +69,20 @@ class DLinkedList:
             curr = curr.next
 
         return False
+
+    def remove_v2(self, x: int) -> bool:
+        node: Node | None = self.find(x)
+
+        if node is None:
+            return False
+
+        if node.prev is not None:
+            node.prev.next = node.next
+        else:
+            self.head = self.head.next
+        if node.next is not None:
+            node.next.prev = node.prev
+        return True
 
     def print(self) -> None:
         curr: Node | None = self.head
