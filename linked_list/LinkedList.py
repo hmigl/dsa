@@ -119,3 +119,20 @@ class LinkedList:
             sum += curr.get_key() ** 2
             curr = curr.next
         return sum
+
+    # (f) Elimine o k-esimo elemento da lista, se houver.
+    # Considere que o primeiro elemento da lista esta na posicao 1
+    def remove_k(self, k: int) -> None:
+        if k < 1 or self.is_empty():
+            return
+        if k == 1:
+            self.head = self.head.next
+        else:
+            pos: int = 1
+            curr: Node = self.head
+            while curr.next:
+                pos += 1
+                if pos == k:
+                    curr.next = curr.next.next
+                    break
+                curr = curr.next
