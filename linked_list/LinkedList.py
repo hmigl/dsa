@@ -89,3 +89,33 @@ class LinkedList:
             curr = curr.next
         return n
 
+    # c) Retorne a media dos valores na lista. Se a lista estiver vazia, o valor da media deve
+    # ser considerado como sendo zero.
+    def media(self) -> float:
+        sum = i = 0
+        curr: Node | None = self.head
+        while curr:
+            sum += curr.get_key()
+            i += 1
+            curr = curr.next
+        return sum / i if i > 0 else 0
+
+    # d) Retorna a soma dos valores armazenados na lista.
+    # Se a lista estiver vazia, retorna o valor zero
+    def soma(self) -> int:
+        sum: int = 0
+        curr: Node | None = self.head
+        while curr:
+            sum += curr.get_key()
+            curr = curr.next
+        return sum
+
+    # e) Retorne a soma dos quadrados dos valores armazenados na lista.
+    # Se a lista estiver vazia, retorna o valor zero
+    def soma_dos_quadrados(self) -> int:
+        sum: int = 0
+        curr: Node | None = self.head
+        while curr:
+            sum += curr.get_key() ** 2
+            curr = curr.next
+        return sum
