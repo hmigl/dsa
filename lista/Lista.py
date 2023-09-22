@@ -87,7 +87,7 @@ class Lista:
     # (f) Elimine o k-esimo elemento da lista, se houver.
     # Considere que o primeiro elemento da lista esta na posicao 1
     def remove_k(self, k: int) -> bool:
-        if k <= 0 or k > self.nelements or self.vazia():
+        if k <= 0 or k > self.nelements:
             return False
         self.nelements -= 1
         self.dados[k - 1] = self.dados[self.nelements]
