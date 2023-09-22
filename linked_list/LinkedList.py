@@ -65,3 +65,17 @@ class LinkedList:
         while curr is not None:
             print(curr.get_key())
             curr = curr.next
+
+    # a) Retorne o menor elemento da lista. Se a lista nao tiver elementos,
+    # a funcao deve retornar uma indicacao de que a lista esta vazia
+    def min(self) -> tuple[bool, int]:
+        if self.is_empty():
+            return (False, -1)
+        curr, min = self.head, self.head.get_key()
+        while curr:
+            k: int = curr.get_key()
+            if k < min:
+                min = k
+            curr = curr.next
+        return (True, min)
+
