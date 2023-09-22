@@ -79,3 +79,13 @@ class LinkedList:
             curr = curr.next
         return (True, min)
 
+    # b) Retorne o numero de elementos com chave ımpar na lista
+    def chaves_impares(self) -> int:
+        n: int = 0
+        curr: Node | None = self.head
+        while curr:
+            if curr.get_key() % 2 != 0:
+                n += 1
+            curr = curr.next
+        return n
+
