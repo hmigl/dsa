@@ -95,6 +95,8 @@ class Lista:
 
     # (g) Retire o elemento de maior valor da lista
     def remove_max(self) -> None:
+        if self.vazia():
+            return
         max, i = self.dados[0], 0
         for j in range(1, self.nelements):
             if self.dados[j] > max:
