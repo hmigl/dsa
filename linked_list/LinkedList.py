@@ -21,8 +21,8 @@ class LinkedList:
         return curr
 
     def insert_back(self, x: int) -> bool:
-        if self.search(x):
-            return False
+        # if self.search(x):
+        #     return False
         new: Node = Node(x)
         if self.is_empty():
             self.head = new
@@ -34,8 +34,8 @@ class LinkedList:
         return True
 
     def insert_front(self, x: int) -> bool:
-        if self.search(x):
-            return False
+        # if self.search(x):
+        #     return False
         new: Node = Node(x)
         new.next = self.head
         self.head = new
@@ -136,3 +136,31 @@ class LinkedList:
                     curr.next = curr.next.next
                     break
                 curr = curr.next
+
+    # (g) Retire o elemento de maior valor da lista
+    def remove_max(self) -> None:
+        if self.is_empty():
+            return
+        curr = largest = self.head
+        max: int = largest.get_key()
+        while curr.next:
+            k: int = curr.next.get_key()
+            if k > max:
+                max = k
+                largest = curr.next
+            curr = curr.next
+        largest.key = self.head.get_key()
+        self.head = self.head.next
+
+    # (h) Retire todos os elementos da lista com chave igual a um valor x, passado como parametro.
+    # Para esta questao, considere que a lista pode conter mais de um elemento com mesmo valor de chave.
+    def remove_todos_x(self, x: int) -> None:
+        while self.head and self.head.get_key() == x:
+            self.head = self.head.next
+        curr = self.head
+        while curr and curr.next:
+            if curr.next.get_key() == x:
+                curr.next = curr.next.next
+            else:
+                curr = curr.next
+
