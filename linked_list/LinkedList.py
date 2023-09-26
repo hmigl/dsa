@@ -190,3 +190,20 @@ class LinkedList:
             prev = curr
             curr = next
         self.head = prev
+
+    # (l) Reordene os elementos da lista, de forma que, se houver elementos na lista cujas chaves sejam
+    # divisiveis por 10, estes devem vir antes dos outros elementos.
+    def reordena_divisiveis_por_10_antes(self) -> None:
+        prev, curr = None, self.head
+        while curr:
+            if curr.key % 10 == 0:
+                if not prev:
+                    curr = curr.next
+                else:
+                    prev.next = curr.next
+                    curr.next = self.head
+                    self.head = curr
+                    curr = prev.next
+            else:
+                prev, curr = curr, curr.next
+
