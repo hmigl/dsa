@@ -164,3 +164,29 @@ class LinkedList:
             else:
                 curr = curr.next
 
+    # (i) Reorganize a lista de forma que os elementos com chaves pares fiquem antes de elementos com chaves impares.
+    def reorganiza_pares_antes(self) -> None:
+        prev, curr = None, self.head
+        while curr:
+            if curr.get_key() % 2 == 0:
+                if not prev:
+                    curr = curr.next
+                else:
+                    prev.next = curr.next
+                    curr.next = self.head
+                    self.head = curr
+                    curr = prev.next
+            else:
+                prev = curr
+                curr = curr.next
+
+
+    # (k) Inverta os elementos da lista
+    def inverte_elementos(self) -> None:
+        prev, curr = None, self.head
+        while curr:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        self.head = prev
