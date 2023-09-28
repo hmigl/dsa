@@ -236,3 +236,16 @@ class LinkedList:
             else:
                 prev, curr = curr, curr.next
 
+    # (m) Duplique elementos com chave igual a x na lista. Especificamente, para cada elemento 'e' da lista
+    # com valor de chave igual a x, essa funcao cria um novo elemento com valor de chave igual a x e
+    # o insere apos 'e' na lista. O valor de x deve ser passado como parametro da funcao.
+    def duplica_todos_x(self, x: int) -> None:
+        curr = self.head
+        while curr:
+            if curr.key == x:
+                node = Node(x)
+                node.next = curr.next
+                curr.next = node
+                curr = node.next
+            else:
+                curr = curr.next
