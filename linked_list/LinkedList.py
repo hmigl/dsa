@@ -180,6 +180,35 @@ class LinkedList:
                 prev = curr
                 curr = curr.next
 
+    # (j) Modifique a lista de tal forma que todo elemento da lista com chave maior do que k venha antes
+    # dos elementos na lista com chaves menores ou iguais a k.
+    # O valor de k deve ser passado como parametro para a funcao.
+    #
+    # Em cada grupo de elementos - maiores do que k e menores ou iguais a k) -
+    # a funcao deve manter a ordem original relativa dos elementos.
+    def reorganiza_maiores_que_k_antes(self, k: int) -> None:
+        maiores = ult = None
+        prev, curr = None, self.head
+        while curr:
+            next = curr.next
+            if curr.key > k:
+                curr.next = None
+                if prev:
+                    prev.next = next
+                else:
+                    self.head = next
+
+                if ult:
+                    ult.next = curr
+                    ult = curr
+                else:
+                    maiores = ult = curr
+            else:
+                prev = curr
+            curr = next
+        if maiores:
+            ult.next = self.head
+            self.head = maiores
 
     # (k) Inverta os elementos da lista
     def inverte_elementos(self) -> None:
