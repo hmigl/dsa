@@ -3,9 +3,6 @@ class Node:
         self.key: int = key
         self.next: Node | None = None
 
-    def get_key(self) -> int:
-        return self.key
-
 
 class LinkedList:
     def __init__(self) -> None:
@@ -16,7 +13,7 @@ class LinkedList:
 
     def search(self, x: int) -> Node | None:
         curr: Node | None = self.head
-        while (curr is not None) and (curr.get_key() != x):
+        while (curr is not None) and (curr.key != x):
             curr = curr.next
         return curr
 
@@ -44,12 +41,12 @@ class LinkedList:
     def remove(self, x: int) -> None:
         if not self.head:
             return
-        if self.head.get_key() == x:
+        if self.head.key == x:
             self.head = self.head.next
             return
         curr: Node = self.head
         while curr.next is not None:
-            if curr.next.get_key() == x:
+            if curr.next.key == x:
                 curr.next = curr.next.next
                 return
             curr = curr.next
@@ -57,13 +54,13 @@ class LinkedList:
     def rem(self, x: int) -> None:
         node: Node | None = self.search(x)
         if node:
-            node.key = self.head.get_key()
+            node.key = self.head.key
             self.head = self.head.next
 
     def print(self) -> None:
         curr: Node | None = self.head
         while curr is not None:
-            print(curr.get_key())
+            print(curr.key)
             curr = curr.next
 
     # a) Retorne o menor elemento da lista. Se a lista nao tiver elementos,
@@ -71,9 +68,9 @@ class LinkedList:
     def min(self) -> tuple[bool, int]:
         if self.is_empty():
             return (False, -1)
-        curr, min = self.head, self.head.get_key()
+        curr, min = self.head, self.head.key
         while curr:
-            k: int = curr.get_key()
+            k: int = curr.key
             if k < min:
                 min = k
             curr = curr.next
@@ -84,7 +81,7 @@ class LinkedList:
         n: int = 0
         curr: Node | None = self.head
         while curr:
-            if curr.get_key() % 2 != 0:
+            if curr.key % 2 != 0:
                 n += 1
             curr = curr.next
         return n
@@ -95,7 +92,7 @@ class LinkedList:
         sum = i = 0
         curr: Node | None = self.head
         while curr:
-            sum += curr.get_key()
+            sum += curr.key
             i += 1
             curr = curr.next
         return sum / i if i > 0 else 0
@@ -106,7 +103,7 @@ class LinkedList:
         sum: int = 0
         curr: Node | None = self.head
         while curr:
-            sum += curr.get_key()
+            sum += curr.key
             curr = curr.next
         return sum
 
@@ -116,7 +113,7 @@ class LinkedList:
         sum: int = 0
         curr: Node | None = self.head
         while curr:
-            sum += curr.get_key() ** 2
+            sum += curr.key**2
             curr = curr.next
         return sum
 
@@ -142,24 +139,24 @@ class LinkedList:
         if self.is_empty():
             return
         curr = largest = self.head
-        max: int = largest.get_key()
+        max: int = largest.key
         while curr.next:
-            k: int = curr.next.get_key()
+            k: int = curr.next.key
             if k > max:
                 max = k
                 largest = curr.next
             curr = curr.next
-        largest.key = self.head.get_key()
+        largest.key = self.head.key
         self.head = self.head.next
 
     # (h) Retire todos os elementos da lista com chave igual a um valor x, passado como parametro.
     # Para esta questao, considere que a lista pode conter mais de um elemento com mesmo valor de chave.
     def remove_todos_x(self, x: int) -> None:
-        while self.head and self.head.get_key() == x:
+        while self.head and self.head.key == x:
             self.head = self.head.next
         curr = self.head
         while curr and curr.next:
-            if curr.next.get_key() == x:
+            if curr.next.key == x:
                 curr.next = curr.next.next
             else:
                 curr = curr.next
@@ -168,7 +165,7 @@ class LinkedList:
     def reorganiza_pares_antes(self) -> None:
         prev, curr = None, self.head
         while curr:
-            if curr.get_key() % 2 == 0:
+            if curr.key % 2 == 0:
                 if not prev:
                     curr = curr.next
                 else:
