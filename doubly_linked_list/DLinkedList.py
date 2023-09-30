@@ -144,3 +144,18 @@ class DLinkedList:
             curr = curr.next
         return sum
 
+    # (f) Elimine o k-esimo elemento da lista, se houver.
+    # Considere que o primeiro elemento da lista esta na posicao 1
+    def remove_k(self, k: int) -> None:
+        curr, pos = self.head, 1
+        while curr and k != pos:
+            pos += 1
+            curr = curr.next
+        if curr:
+            if curr.prev:
+                curr.prev.next = curr.next
+            else:
+                self.head = self.head.next
+            if curr.next:
+                curr.next.prev = curr.prev
+
