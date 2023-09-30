@@ -89,3 +89,58 @@ class DLinkedList:
         while curr is not None:
             print(curr.key)
             curr = curr.next
+
+    # a) Retorne o menor elemento da lista. Se a lista nao tiver elementos,
+    # a funcao deve retornar uma indicacao de que a lista esta vazia
+    def min(self) -> tuple[bool, int]:
+        if not self.head:
+            return (False, -1)
+        curr = self.head
+        min = curr.key
+        while curr.next:
+            if curr.next.key < min:
+                min = curr.next.key
+            curr = curr.next
+        return (True, min)
+
+    # b) Retorne o numero de elementos com chave ımpar na lista
+    def chaves_impares(self) -> int:
+        n = 0
+        curr = self.head
+        while curr:
+            if curr.key % 2 != 0:
+                n += 1
+            curr = curr.next
+        return n
+
+    # c) Retorne a media dos valores na lista. Se a lista estiver vazia, o valor da media deve
+    # ser considerado como sendo zero.
+    def media(self) -> float:
+        sum = i = 0
+        curr = self.head
+        while curr:
+            sum += curr.key
+            i += 1
+            curr = curr.next
+        return sum / i if i > 0 else 0
+
+    # d) Retorna a soma dos valores armazenados na lista.
+    # Se a lista estiver vazia, retorna o valor zero
+    def soma(self) -> int:
+        sum = 0
+        curr = self.head
+        while curr:
+            sum += curr.key
+            curr = curr.next
+        return sum
+
+    # e) Retorne a soma dos quadrados dos valores armazenados na lista.
+    # Se a lista estiver vazia, retorna o valor zero
+    def soma_dos_quadrados(self) -> int:
+        sum = 0
+        curr = self.head
+        while curr:
+            sum += curr.key**2
+            curr = curr.next
+        return sum
+
