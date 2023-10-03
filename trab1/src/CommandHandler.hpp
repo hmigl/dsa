@@ -15,4 +15,10 @@ class CommandHandler {
 
  private:
   LinkedList list1, list2, list3, list4;
+
+  void insertWord();
+  void listWords();
+  void listWordsByLength();
+  void listWordsAlphabetically();
+  void removeWord();
 };
