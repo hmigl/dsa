@@ -11,4 +11,5 @@ class LinkedList {
   Node *head;
 
   void insert(const std::string &);
+  bool find(const std::string &);
 };

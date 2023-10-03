@@ -10,7 +10,27 @@ LinkedList::~LinkedList() {
   }
 }
 
-void LinkedList::insert(const std::string &word) {}
+void LinkedList::insert(const std::string &word) {
+  Node *node = new Node(word);
+  if (!this->head || word < this->head->word) {
+    node->next = this->head;
+    this->head = node;
+    return;
+  }
+
+  Node *curr = this->head;
+  while (curr->next) {
+    if (word < curr->next->word) {
+      node->next = curr->next;
+      curr->next = node;
+      return;
+    }
+    curr = curr->next;
+  }
+
+  curr->next = node;
+}
+
 bool LinkedList::find(const std::string &word) {
   Node *curr = this->head;
   while (curr) {
