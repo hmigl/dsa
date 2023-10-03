@@ -10,6 +10,6 @@ class LinkedList {
 
   Node *head;
 
-  void insert(const std::string &);
-  bool find(const std::string &);
+  void insert(const std::string &, Node *Node::*);
+  bool find(const std::string &, Node *Node::*);
 };

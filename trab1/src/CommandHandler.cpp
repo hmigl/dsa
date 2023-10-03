@@ -12,18 +12,18 @@ void CommandHandler::insertWord() {
   std::string word;
   std::getline(std::cin >> std::ws, word);
 
-  if (list4.find(word)) {
+  if (list4.find(word, &Node::next4)) {
     std::cout << "palavra ja existente\n";
     return;
   }
 
   std::string::size_type size = word.length();
   if (size <= 5) {
-    // this->list1.insert(word);
+    this->list1.insert(word, &Node::next);
   } else if (size >= 6 && size <= 10) {
-    // this->list2.insert(word);
+    this->list2.insert(word, &Node::next);
   } else {
-    // this->list3.insert(word);
+    this->list3.insert(word, &Node::next);
   }
 }
 

@@ -10,34 +10,34 @@ LinkedList::~LinkedList() {
   }
 }
 
-void LinkedList::insert(const std::string &word) {
+void LinkedList::insert(const std::string &word, Node *Node::*next) {
   Node *node = new Node(word);
   if (!this->head || word < this->head->word) {
-    node->next = this->head;
+    node->*next = this->head;
     this->head = node;
     return;
   }
 
   Node *curr = this->head;
-  while (curr->next) {
+  while (curr->*next) {
     if (word < curr->next->word) {
-      node->next = curr->next;
-      curr->next = node;
+      node->*next = curr->*next;
+      curr->*next = node;
       return;
     }
-    curr = curr->next;
+    curr = curr->*next;
   }
 
-  curr->next = node;
+  curr->*next = node;
 }
 
-bool LinkedList::find(const std::string &word) {
+bool LinkedList::find(const std::string &word, Node *Node::*next) {
   Node *curr = this->head;
   while (curr) {
-    if (curr->word.compare(word) == 0) {
+    if (curr->word == word) {
       return true;
     }
-    curr = curr->next4;
+    curr = curr->*next;
   }
   return false;
 }
