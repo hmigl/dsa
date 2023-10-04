@@ -88,4 +88,5 @@ void CommandHandler::run() {
       removeWord();
     }
   }
+  this->list4.clear(&Node::next4);
 }

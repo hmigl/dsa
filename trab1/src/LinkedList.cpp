@@ -2,13 +2,7 @@
 
 LinkedList::LinkedList() : head(nullptr) {}
 
-LinkedList::~LinkedList() {
-  while (this->head) {
-    Node *tmp = this->head;
-    this->head = this->head->next;
-    delete tmp;
-  }
-}
+LinkedList::~LinkedList() {}
 
 void LinkedList::insert(Node *node, Node *Node::*next) {
   std::string word = node->word;
@@ -47,5 +41,13 @@ void LinkedList::display(Node *Node::*next) const {
   while (curr) {
     std::cout << curr->word << '\n';
     curr = curr->*next;
+  }
+}
+
+void LinkedList::clear(Node *Node::*next) {
+  while (this->head) {
+    Node *tmp = this->head;
+    this->head = (this->head)->*next;
+    delete tmp;
   }
 }
