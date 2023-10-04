@@ -38,6 +38,12 @@ bool LinkedList::find(const std::string &word, Node *Node::*next) {
 
 void LinkedList::display(Node *Node::*next) const {
   Node *curr = this->head;
+
+  if (!curr) {
+    std::cout << "lista vazia\n";
+    return;
+  }
+
   while (curr) {
     std::cout << curr->word << '\n';
     curr = curr->*next;
@@ -49,5 +55,22 @@ void LinkedList::clear(Node *Node::*next) {
     Node *tmp = this->head;
     this->head = (this->head)->*next;
     delete tmp;
+  }
+}
+
+void LinkedList::displayByLength(size_t n, Node *Node::*next) const {
+  Node *curr = this->head;
+  int i = 0;
+
+  while (curr) {
+    if (curr->word.length() == n) {
+      std::cout << curr->word << '\n';
+      ++i;
+    }
+    curr = curr->*next;
+  }
+
+  if (i == 0) {
+    std::cout << "lista vazia\n";
   }
 }

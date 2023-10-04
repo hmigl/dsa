@@ -16,4 +16,5 @@ class LinkedList {
   bool find(const std::string &, Node *Node::*);
   void display(Node *Node::*) const;
   void clear(Node *Node::*);
+  void displayByLength(size_t, Node *Node::*) const;
 };

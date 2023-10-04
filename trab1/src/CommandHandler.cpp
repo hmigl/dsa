@@ -8,6 +8,9 @@ CommandHandler::CommandHandler(LinkedList list1, LinkedList list2,
 
 CommandHandler::~CommandHandler() {}
 
+// Private methods implementation
+// ----------------------------
+
 LinkedList *CommandHandler::getListByWordSize(
     const std::string::size_type &size) {
   if (size <= 5) {
@@ -41,6 +44,7 @@ void CommandHandler::listWords() const {
   std::cin >> n;
 
   if (std::cin.fail()) {
+    std::cin.clear();
     return;
   }
 
@@ -62,11 +66,25 @@ void CommandHandler::listWords() const {
   }
 }
 
-void CommandHandler::listWordsByLength() {}
+void CommandHandler::listWordsByLength() {
+  size_t n;
+  std::cin >> n;
+
+  if (std::cin.fail()) {
+    std::cin.clear();
+    return;
+  }
+
+  LinkedList *list = getListByWordSize(n);
+  list->displayByLength(n, &Node::next);
+}
 
 void CommandHandler::listWordsAlphabetically() {}
 
 void CommandHandler::removeWord() {}
+
+// Public methods implementation
+// ----------------------------
 
 void CommandHandler::run() {
   std::string command;
