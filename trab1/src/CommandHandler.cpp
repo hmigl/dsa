@@ -10,20 +10,24 @@ CommandHandler::~CommandHandler() {}
 
 void CommandHandler::insertWord() {
   std::string word;
-  std::getline(std::cin >> std::ws, word);
+  std::cin >> word;
 
   if (list4.find(word, &Node::next4)) {
     std::cout << "palavra ja existente\n";
     return;
   }
 
+  list4.insert(word, &Node::next4);
   std::string::size_type size = word.length();
   if (size <= 5) {
     this->list1.insert(word, &Node::next);
+    std::cout << "inseriu na 1\n";
   } else if (size >= 6 && size <= 10) {
     this->list2.insert(word, &Node::next);
+    std::cout << "inseriu na 2\n";
   } else {
     this->list3.insert(word, &Node::next);
+    std::cout << "inseriu na 3\n";
   }
 }
 
@@ -39,7 +43,7 @@ void CommandHandler::run() {
   std::string command;
 
   for (;;) {
-    std::getline(std::cin >> std::ws, command);
+    std::cin >> command;
 
     if (command.compare("e") == 0) {
       break;
