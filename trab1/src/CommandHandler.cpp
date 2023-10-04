@@ -32,12 +32,11 @@ void CommandHandler::insertWord() {
 
   Node *node = new Node(word);
   list->insert(node, &Node::next);
-  std::cout << "palavra inserida: " << word << '\n';
-
   this->list4.insert(node, &Node::next4);
+  std::cout << "palavra inserida: " << word << '\n';
 }
 
-void CommandHandler::listWords() {
+void CommandHandler::listWords() const {
   int n;
   std::cin >> n;
 
