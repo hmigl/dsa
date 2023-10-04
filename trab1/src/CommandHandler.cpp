@@ -37,7 +37,31 @@ void CommandHandler::insertWord() {
   this->list4.insert(node, &Node::next4);
 }
 
-void CommandHandler::listWords() {}
+void CommandHandler::listWords() {
+  int n;
+  std::cin >> n;
+
+  if (std::cin.fail()) {
+    return;
+  }
+
+  switch (n) {
+    case 1:
+      this->list1.display(&Node::next);
+      break;
+    case 2:
+      this->list2.display(&Node::next);
+      break;
+    case 3:
+      this->list3.display(&Node::next);
+      break;
+    case 4:
+      this->list4.display(&Node::next4);
+      break;
+    default:
+      break;
+  }
+}
 
 void CommandHandler::listWordsByLength() {}
 

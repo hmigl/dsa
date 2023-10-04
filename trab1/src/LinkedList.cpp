@@ -41,3 +41,11 @@ bool LinkedList::find(const std::string &word, Node *Node::*next) {
   }
   return false;
 }
+
+void LinkedList::display(Node *Node::*next) const {
+  Node *curr = this->head;
+  while (curr) {
+    std::cout << curr->word << '\n';
+    curr = curr->*next;
+  }
+}
