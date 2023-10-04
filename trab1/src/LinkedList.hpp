@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #include "Node.hpp"
 
 class LinkedList {
@@ -10,6 +12,6 @@ class LinkedList {
 
   Node *head;
 
-  void insert(const std::string &, Node *Node::*);
+  void insert(Node *, Node *Node::*);
   bool find(const std::string &, Node *Node::*);
 };

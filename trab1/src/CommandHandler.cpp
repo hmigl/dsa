@@ -8,27 +8,33 @@ CommandHandler::CommandHandler(LinkedList list1, LinkedList list2,
 
 CommandHandler::~CommandHandler() {}
 
+LinkedList *CommandHandler::getListByWordSize(
+    const std::string::size_type &size) {
+  if (size <= 5) {
+    return &this->list1;
+  } else if (size <= 10) {
+    return &this->list2;
+  }
+  return &this->list3;
+}
+
 void CommandHandler::insertWord() {
   std::string word;
   std::cin >> word;
 
-  if (list4.find(word, &Node::next4)) {
-    std::cout << "palavra ja existente\n";
+  std::string::size_type size = word.length();
+  LinkedList *list = getListByWordSize(size);
+
+  if (list->find(word, &Node::next)) {
+    std::cout << "palavra ja existente: " << word << '\n';
     return;
   }
 
-  list4.insert(word, &Node::next4);
-  std::string::size_type size = word.length();
-  if (size <= 5) {
-    this->list1.insert(word, &Node::next);
-    std::cout << "inseriu na 1\n";
-  } else if (size >= 6 && size <= 10) {
-    this->list2.insert(word, &Node::next);
-    std::cout << "inseriu na 2\n";
-  } else {
-    this->list3.insert(word, &Node::next);
-    std::cout << "inseriu na 3\n";
-  }
+  Node *node = new Node(word);
+  list->insert(node, &Node::next);
+  std::cout << "palavra inserida: " << word << '\n';
+
+  this->list4.insert(node, &Node::next4);
 }
 
 void CommandHandler::listWords() {}

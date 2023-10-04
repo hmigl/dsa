@@ -21,4 +21,5 @@ class CommandHandler {
   void listWordsByLength();
   void listWordsAlphabetically();
   void removeWord();
+  LinkedList *getListByWordSize(const std::string::size_type &);
 };

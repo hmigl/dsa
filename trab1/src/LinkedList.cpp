@@ -10,8 +10,8 @@ LinkedList::~LinkedList() {
   }
 }
 
-void LinkedList::insert(const std::string &word, Node *Node::*next) {
-  Node *node = new Node(word);
+void LinkedList::insert(Node *node, Node *Node::*next) {
+  std::string word = node->word;
   if (!this->head || word.compare(this->head->word) < 0) {
     node->*next = this->head;
     this->head = node;
