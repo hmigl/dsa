@@ -97,7 +97,21 @@ void CommandHandler::listWordsAlphabetically() {
   this->list4.displayAlphabetically(from, untill, &Node::next4);
 }
 
-void CommandHandler::removeWord() {}
+void CommandHandler::removeWord() {
+  std::string word;
+  std::cin >> word;
+
+  LinkedList *list = getListByWordSize(word.size());
+  if (!list->find(word, &Node::next)) {
+    std::cout << "palavra inexistente: " << word << '\n';
+    return;
+  }
+
+  list->removeNode(word, &Node::next);
+  Node *removed = this->list4.removeNode(word, &Node::next4);
+  delete removed;
+  std::cout << "palavra removida: " << word << '\n';
+}
 
 // Public methods implementation
 // ----------------------------

@@ -93,3 +93,25 @@ void LinkedList::displayAlphabetically(char from, char untill,
     std::cout << "lista vazia\n";
   }
 }
+
+Node *LinkedList::removeNode(const std::string &word, Node *Node::*next) {
+  if (!this->head) {
+    return nullptr;
+  }
+
+  if (this->head->word.compare(word) == 0) {
+    Node *head = this->head;
+    this->head = this->head->*next;
+    return head;
+  }
+
+  Node *curr = this->head;
+  while (curr->*next) {
+    if ((curr->*next)->word.compare(word) == 0) {
+      curr->*next = (curr->*next)->*next;
+      break;
+    }
+    curr = curr->*next;
+  }
+  return curr->*next;
+}

@@ -18,4 +18,5 @@ class LinkedList {
   void clear(Node *Node::*);
   void displayByLength(size_t, Node *Node::*) const;
   void displayAlphabetically(char, char, Node *Node::*) const;
+  Node *removeNode(const std::string &, Node *Node::*);
 };
