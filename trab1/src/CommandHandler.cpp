@@ -79,7 +79,23 @@ void CommandHandler::listWordsByLength() {
   list->displayByLength(n, &Node::next);
 }
 
-void CommandHandler::listWordsAlphabetically() {}
+void CommandHandler::listWordsAlphabetically() {
+  char from;
+  std::cin >> from;
+  if (std::cin.fail()) {
+    std::cin.clear();
+    return;
+  }
+
+  char untill;
+  std::cin >> untill;
+  if (std::cin.fail()) {
+    std::cin.clear();
+    return;
+  }
+
+  this->list4.displayAlphabetically(from, untill, &Node::next4);
+}
 
 void CommandHandler::removeWord() {}
 

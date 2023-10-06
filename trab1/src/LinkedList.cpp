@@ -74,3 +74,22 @@ void LinkedList::displayByLength(size_t n, Node *Node::*next) const {
     std::cout << "lista vazia\n";
   }
 }
+
+void LinkedList::displayAlphabetically(char from, char untill,
+                                       Node *Node::*next) const {
+  Node *curr = this->head;
+  int i = 0;
+
+  while (curr) {
+    std::string word = curr->word;
+    if (word.at(0) >= from && word.at(0) <= untill) {
+      std::cout << curr->word << '\n';
+      ++i;
+    }
+    curr = curr->*next;
+  }
+
+  if (i == 0) {
+    std::cout << "lista vazia\n";
+  }
+}
