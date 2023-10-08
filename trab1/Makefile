@@ -8,7 +8,7 @@ LDLIBS   +=
 CXX      := g++
 LINK.cpp := $(filter-out $(CXXFLAGS), $(LINK.cpp))
 
-SRCS     := main.cpp Node.cpp LinkedList.cpp CommandHandler.cpp
+SRCS     := main.cpp LinkedList.cpp CommandHandler.cpp
 OBJS     := $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 DEPS     := $(OBJS:.o=.d)
 NAME     := trab1
