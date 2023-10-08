@@ -79,7 +79,7 @@ void CommandHandler::listWordsByLength() {
   list->displayByLength(n, &Node::next);
 }
 
-void CommandHandler::listWordsAlphabetically() {
+void CommandHandler::listWordsAlphabetically() const {
   char from;
   std::cin >> from;
   if (std::cin.fail()) {

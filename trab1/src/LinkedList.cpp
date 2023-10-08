@@ -25,7 +25,7 @@ void LinkedList::insert(Node *node, Node *Node::*next) {
   curr->*next = node;
 }
 
-bool LinkedList::find(const std::string &word, Node *Node::*next) {
+bool LinkedList::find(const std::string &word, Node *Node::*next) const {
   Node *curr = this->head;
   while (curr) {
     if (curr->word.compare(word) == 0) {

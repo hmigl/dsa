@@ -19,7 +19,7 @@ class CommandHandler {
   void insertWord();
   void listWords() const;
   void listWordsByLength();
-  void listWordsAlphabetically();
+  void listWordsAlphabetically() const;
   void removeWord();
   LinkedList *getListByWordSize(const std::string::size_type &);
 };
