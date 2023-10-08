@@ -159,3 +159,22 @@ class DLinkedList:
             if curr.next:
                 curr.next.prev = curr.prev
 
+    # (g) Retire o elemento de maior valor da lista
+    def remove_max(self) -> None:
+        if not self.head:
+            return
+
+        curr = largest = self.head
+        max = curr.key
+        while curr.next:
+            if curr.next.key > max:
+                largest, max = curr.next, curr.next.key
+            curr = curr.next
+
+        if not largest.prev:
+            self.head = self.head.next
+        else:
+            largest.prev.next = largest.next
+            if largest.next:
+                largest.next.prev = largest.prev
+
