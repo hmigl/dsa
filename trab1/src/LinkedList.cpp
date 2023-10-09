@@ -108,10 +108,11 @@ Node *LinkedList::removeNode(const std::string &word, Node *Node::*next) {
   Node *curr = this->head;
   while (curr->*next) {
     if ((curr->*next)->word.compare(word) == 0) {
+      Node *tmp = curr->*next;
       curr->*next = (curr->*next)->*next;
-      break;
+      return tmp;
     }
     curr = curr->*next;
   }
-  return curr->*next;
+  return nullptr;
 }
