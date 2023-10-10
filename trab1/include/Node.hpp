@@ -4,8 +4,9 @@
 
 struct Node {
   std::string word;
-  Node *next;
-  Node *next4;
+  Node *nextInBasicList;
+  Node *crossListNext;
 
-  Node(const std::string &word) : word(word), next(nullptr), next4(nullptr) {}
+  Node(const std::string &word)
+      : word(word), nextInBasicList(nullptr), crossListNext(nullptr) {}
 };

@@ -25,17 +25,16 @@ void CommandHandler::insertWord() {
   std::string word;
   std::cin >> word;
 
-  std::string::size_type size = word.length();
-  LinkedList *list = getListByWordSize(size);
+  LinkedList *list = getListByWordSize(word.length());
 
-  if (list->find(word, &Node::next)) {
+  if (list->find(word, &Node::nextInBasicList)) {
     std::cout << "palavra ja existente: " << word << '\n';
     return;
   }
 
   Node *node = new Node(word);
-  list->insert(node, &Node::next);
-  this->list4.insert(node, &Node::next4);
+  list->insert(node, &Node::nextInBasicList);
+  this->list4.insert(node, &Node::crossListNext);
   std::cout << "palavra inserida: " << word << '\n';
 }
 
@@ -50,16 +49,16 @@ void CommandHandler::listWords() const {
 
   switch (n) {
     case 1:
-      this->list1.display(&Node::next);
+      this->list1.display(&Node::nextInBasicList);
       break;
     case 2:
-      this->list2.display(&Node::next);
+      this->list2.display(&Node::nextInBasicList);
       break;
     case 3:
-      this->list3.display(&Node::next);
+      this->list3.display(&Node::nextInBasicList);
       break;
     case 4:
-      this->list4.display(&Node::next4);
+      this->list4.display(&Node::crossListNext);
       break;
     default:
       break;
@@ -76,7 +75,7 @@ void CommandHandler::listWordsByLength() {
   }
 
   LinkedList *list = getListByWordSize(n);
-  list->displayByLength(n, &Node::next);
+  list->displayByLength(n, &Node::nextInBasicList);
 }
 
 void CommandHandler::listWordsAlphabetically() const {
@@ -94,7 +93,7 @@ void CommandHandler::listWordsAlphabetically() const {
     return;
   }
 
-  this->list4.displayAlphabetically(from, untill, &Node::next4);
+  this->list4.displayAlphabetically(from, untill, &Node::crossListNext);
 }
 
 void CommandHandler::removeWord() {
@@ -102,13 +101,13 @@ void CommandHandler::removeWord() {
   std::cin >> word;
 
   LinkedList *list = getListByWordSize(word.size());
-  if (!list->find(word, &Node::next)) {
+  if (!list->find(word, &Node::nextInBasicList)) {
     std::cout << "palavra inexistente: " << word << '\n';
     return;
   }
 
-  list->removeNode(word, &Node::next);
-  Node *removed = this->list4.removeNode(word, &Node::next4);
+  list->removeNode(word, &Node::nextInBasicList);
+  Node *removed = this->list4.removeNode(word, &Node::crossListNext);
   delete removed;
   std::cout << "palavra removida: " << word << '\n';
 }
@@ -136,5 +135,5 @@ void CommandHandler::run() {
       removeWord();
     }
   }
-  this->list4.clear(&Node::next4);
+  this->list4.clear(&Node::crossListNext);
 }
