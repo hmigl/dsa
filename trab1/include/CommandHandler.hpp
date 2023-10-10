@@ -6,7 +6,6 @@
 
 class CommandHandler {
  public:
-  CommandHandler();
   CommandHandler(LinkedList, LinkedList, LinkedList, LinkedList);
   CommandHandler &operator=(const CommandHandler &) = default;
   ~CommandHandler();
@@ -14,6 +13,8 @@ class CommandHandler {
   void run();
 
  private:
+  CommandHandler();
+
   LinkedList list1, list2, list3, list4;
 
   void insertWord();
