@@ -62,16 +62,16 @@ void CommandHandler::listWords() const {
 }
 
 void CommandHandler::listWordsByLength() {
-  size_t n;
-  std::cin >> n;
+  size_t size;
+  std::cin >> size;
 
   if (std::cin.fail()) {
     std::cin.clear();
     return;
   }
 
-  LinkedList *list = getListByWordSize(n);
-  list->displayByLength(n, &Node::nextInBasicList);
+  LinkedList *list = getListByWordSize(size);
+  list->displayByLength(size, &Node::nextInBasicList);
 }
 
 void CommandHandler::listWordsAlphabetically() const {
