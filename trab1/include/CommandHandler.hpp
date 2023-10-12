@@ -74,5 +74,5 @@ class CommandHandler {
    * @param size O tamanho da palavra para a qual a lista deve ser determinada.
    * @return Um ponteiro para a lista apropriada (1, 2 ou 3)
    */
-  LinkedList *getListByWordSize(const std::string::size_type &);
+  LinkedList *getListByWordSize(std::string::size_type size);
 };

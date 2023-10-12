@@ -8,11 +8,7 @@ CommandHandler::CommandHandler(LinkedList list1, LinkedList list2,
 
 CommandHandler::~CommandHandler() {}
 
-// Private methods implementation
-// ----------------------------
-
-LinkedList *CommandHandler::getListByWordSize(
-    const std::string::size_type &size) {
+LinkedList *CommandHandler::getListByWordSize(std::string::size_type size) {
   if (size <= 5) {
     return &this->list1;
   } else if (size <= 10) {
@@ -111,9 +107,6 @@ void CommandHandler::removeWord() {
   delete removed;
   std::cout << "palavra removida: " << word << '\n';
 }
-
-// Public methods implementation
-// ----------------------------
 
 void CommandHandler::run() {
   std::string command;
