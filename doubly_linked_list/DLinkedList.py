@@ -178,3 +178,20 @@ class DLinkedList:
             if largest.next:
                 largest.next.prev = largest.prev
 
+    # (h) Retire todos os elementos da lista com chave igual a um valor x, passado como parametro.
+    # Para esta questao, considere que a lista pode conter mais de um elemento com mesmo valor de chave.
+    def remove_todos_x(self, x: int) -> None:
+        while self.head and self.head.key == x:
+            self.head = self.head.next
+            if self.head:
+                self.head.prev = None
+
+        curr = self.head
+        while curr and curr.next:
+            if curr.next.key == x:
+                curr.next = curr.next.next
+                if curr.next:
+                    curr.next.prev = curr
+            else:
+                curr = curr.next
+
