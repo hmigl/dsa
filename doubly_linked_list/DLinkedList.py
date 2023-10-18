@@ -195,3 +195,21 @@ class DLinkedList:
             else:
                 curr = curr.next
 
+    # (i) Reorganize a lista de forma que os elementos com chaves pares fiquem antes
+    # de elementos com chaves impares.
+    def reorganiza_pares_antes(self) -> None:
+        curr = self.head
+        while curr and curr.key % 2 == 0:
+            curr = curr.next
+
+        while curr:
+            if curr.key % 2 == 0:
+                next = curr.next
+                curr.prev.next = next
+                if next:
+                    next.prev = curr.prev
+                curr.next, curr.prev = self.head, None
+                self.head, curr = curr, next
+            else:
+                curr = curr.next
+
