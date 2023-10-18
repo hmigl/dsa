@@ -213,3 +213,13 @@ class DLinkedList:
             else:
                 curr = curr.next
 
+    # (k) Inverta os elementos da lista
+    def inverte_elementos(self) -> None:
+        prev = None
+        while self.head:
+            prev = self.head.prev
+            self.head.prev = self.head.next
+            self.head.next = prev
+            self.head = self.head.prev
+        if prev:
+            self.head = prev.prev
